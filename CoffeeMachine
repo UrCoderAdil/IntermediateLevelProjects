@@ -1,0 +1,116 @@
+#include <iostream>
+void startUp(int &milk,int & money){
+    int choice;
+    float amount;
+    std::cout<<"What Will You take!?\n"
+    "For  a latte ($10) Enter 0 \n"
+    "For  a Cappacino ($15) Enter 1 \n"
+    "For  a MilkTea ($6) Enter 2 \n"
+    "For  a CardimomTea ($8) Enter 3 \n"
+    "Enter your choice here: ";
+    std::cin>>choice;
+    if(milk>50){
+    switch(choice){
+        case 0:
+        std::cout<<"Insert $10 :"<<std::endl;
+        std::cin>>amount;
+        money+=amount;
+        if(amount==10){
+            std::cout<<"Here is Your latte!!\n";
+            milk-=150;
+        }
+        else if (amount>10){
+            std::cout<<"Here is Your latte!!\n"<<std::endl;
+            std::cout<<"Here is Your Change: $"<<amount-10<<std::endl;
+            money-=(amount-10);
+            milk-=150;
+        }
+        else{
+            std::cout<<"You haven't entered enough amount for purchase!!\n";
+             std::cout<<"Here is Your Money Back: $"<<amount<<std::endl;
+        }
+        break;
+
+
+         case 1:
+        std::cout<<"Insert $15 :"<<std::endl;
+        std::cin>>amount;
+        money+=amount;
+        if(amount==15){
+            std::cout<<"Here is Your Cappacino!!\n";
+            milk-=150;
+        }
+        else if (amount>15){
+            std::cout<<"Here is Your Cappacino!!\n";
+            std::cout<<"Here is Your Change: $"<<amount-15<<std::endl;
+            money-=(amount-15);
+            milk-=150;
+        }
+        else{
+            std::cout<<"You haven't entered enough amount for purchase!!\n";
+             std::cout<<"Here is Your Money Back: $"<<amount<<std::endl;
+        }
+        break;
+         case 2:
+        std::cout<<"Insert $6 :"<<std::endl;
+        std::cin>>amount;
+        money+=amount;
+        if(amount==6){
+            std::cout<<"Here is Your MilkTea!!\n";
+            milk-=80;
+        }
+        else if (amount>6){
+            std::cout<<"Here is Your Cappacino!!\n";
+            std::cout<<"Here is Your Change: $"<<amount-6<<std::endl;
+            money-=(amount-6);
+            milk-=80;
+        }
+        else{
+            std::cout<<"You haven't entered enough amount for purchase!!\n";
+             std::cout<<"Here is Your Money Back: $"<<amount<<std::endl;
+        }
+        break;
+         case 3:
+        std::cout<<"Insert $8 :"<<std::endl;
+        std::cin>>amount;
+        money+=amount;
+        if(amount==8){
+            std::cout<<"Here is Your Cardimom!!\n";
+            milk-=100;
+        }
+        else if (amount>8){
+            std::cout<<"Here is Your Cardimom!!\n";
+            std::cout<<"Here is Your Change: $"<<amount-8<<std::endl;
+            money-=(amount-8);
+            milk-=100;
+        }
+        else{
+            std::cout<<"You haven't entered enough amount for purchase!!\n";
+             std::cout<<"Here is Your Money Back: $"<<amount<<std::endl;
+        }
+        break;
+        default:
+        std::cout<<"Invalid choice!!\n";
+        break;
+    }
+    }
+    else{
+        std::cout<<"Sorry the machine needs a refill!!\n";
+    }
+    
+    }
+
+
+
+
+int main(){
+    int MoneyBank;
+    int milk=1000;
+    std::cout<<"\n______________________Welcome to CoffeMachine______________________\n";
+    while(milk>50){
+    startUp(milk,MoneyBank);
+    }
+    std::cout<<"Sorry the machine needs a refill!!\n";
+    std::cout<<"Total Earnings $ "<<MoneyBank<<std::endl;
+    std::cout<<"Milk remaing "<<milk<<"ml\n";
+}
