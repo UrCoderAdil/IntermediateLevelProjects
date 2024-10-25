@@ -15,9 +15,11 @@ int main() {
     while (!GameOver) {
         DrawBoard(choices);
         Player_1(choices, p1);
+        DrawBoard(choices);
         GameOver = CheckWinner(choices, p1, p2);
         if (GameOver) { break; }
         Player_2(choices, p2);
+        DrawBoard(choices);
         GameOver = CheckWinner(choices, p1, p2);
     }
 
