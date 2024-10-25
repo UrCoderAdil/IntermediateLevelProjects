@@ -1,0 +1,134 @@
+#include <iostream>
+
+void DrawBoard(char array[]);
+void Player_1(char array[], char p1);
+void Player_2(char array[], char p2);
+bool CheckWinner(char array[], char p1, char p2);
+
+int main() {
+    std::cout << "______________________Welcome to Multiplayer TicTacToe Game ___________________________\n";
+    std::cout << "Player 1 is 'X'\n Player 2 is 'O'\n";
+    char p1 = 'X', p2 = 'O';
+    char choices[9] = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+    bool GameOver = false;
+
+    while (!GameOver) {
+        DrawBoard(choices);
+        Player_1(choices, p1);
+        GameOver = CheckWinner(choices, p1, p2);
+        if (GameOver) { break; }
+        Player_2(choices, p2);
+        GameOver = CheckWinner(choices, p1, p2);
+    }
+
+    return 0;
+}
+
+void DrawBoard(char array[]) {
+    std::cout << "   1   |   2   |   3   " << std::endl;
+    std::cout << "   " << array[0] << "   |   " << array[1] << "   |   " << array[2] << "   " << std::endl;
+    std::cout << "________________________" << std::endl;
+    std::cout << "   4   |   5   |   6   " << std::endl;
+    std::cout << "   " << array[3] << "   |   " << array[4] << "   |   " << array[5] << "   " << std::endl;
+    std::cout << "________________________" << std::endl;
+    std::cout << "   7   |   8   |   9   " << std::endl;
+    std::cout << "   " << array[6] << "   |   " << array[7] << "   |   " << array[8] << "   " << std::endl;
+    std::cout << std::endl;
+}
+
+void Player_1(char array[], char p1) {
+    bool ValidInput = false;
+    while (!ValidInput) {
+        int i;
+        std::cout << "Player 1 Please Enter Value from board above (1-9): ";
+        std::cin >> i;
+        if (array[i - 1] == ' ') {
+            array[i - 1] = p1;
+            ValidInput = true;
+        } else {
+            std::cout << "Invalid Input!!\nPlease Try Again!!";
+        }
+    }
+}
+
+void Player_2(char array[], char p2) {
+    bool ValidInput = false;
+    while (!ValidInput) {
+        int i;
+        std::cout << "Player 2 Please Enter Value from board above (1-9): ";
+        std::cin >> i;
+        if (array[i - 1] == ' ') {
+            array[i - 1] = p2;
+            ValidInput = true;
+        } else {
+            std::cout << "Invalid Input!!\nPlease Try Again!!";
+        }
+    }
+}
+
+bool CheckWinner(char array[], char p1, char p2) {
+    if (array[0] != ' ' && array[0] == array[1] && array[0] == array[2]) {
+        if (array[0] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[3] != ' ' && array[3] == array[4] && array[3] == array[5]) {
+        if (array[3] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[6] != ' ' && array[6] == array[7] && array[6] == array[8]) {
+        if (array[6] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[0] != ' ' && array[0] == array[3] && array[0] == array[6]) {
+        if (array[0] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[1] != ' ' && array[1] == array[4] && array[1] == array[7]) {
+        if (array[1] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[2] != ' ' && array[2] == array[5] && array[2] == array[8]) {
+        if (array[2] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[0] != ' ' && array[0] == array[4] && array[0] == array[8]) {
+        if (array[0] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[2] != ' ' && array[2] == array[4] && array[2] == array[6]) {
+        if (array[2] == p1) {
+            std::cout << "Congratulations!!\nPlayer 1 has Won the Match!!";
+        } else {
+            std::cout << "Congratulations!!\nPlayer 2 has Won the Match!!";
+        }
+        return true;
+    } else if (array[0] != ' ' && array[1] != ' ' && array[2] != ' ' &&
+               array[3] != ' ' && array[4] != ' ' && array[5] != ' ' &&
+               array[6] != ' ' && array[7] != ' ' && array[8] != ' ') {
+        std::cout << "\nIt's a draw!!";
+        return true;
+    } else {
+        return false;
+    }
+}
